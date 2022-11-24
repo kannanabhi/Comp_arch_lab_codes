@@ -22,7 +22,7 @@ module tb_dff_clear;
     initial 
     begin
         #0 d=0; reset=1;
-        #4 d=1; reset=0;
+        #4 d=0; reset=0;
         #50 d=1; reset=1;
         #20 d=0; reset=0;
         #30 $finish;
