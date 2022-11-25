@@ -1,0 +1,49 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "D:\APK_SE~1\verilog\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\APK_SE~1\verilog\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\APK_SE~1\verilog\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\APK_SE~1\verilog\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\APK_SE~1\verilog\iverilog\lib\ivl\va_math.vpi";
+S_0000025d9e576340 .scope module, "tb_bit32and" "tb_bit32and" 2 1;
+ .timescale 0 0;
+v0000025d9e52b8f0_0 .var "in1", 31 0;
+v0000025d9e52b990_0 .var "in2", 31 0;
+v0000025d9e52ba30_0 .net "out", 31 0, L_0000025d9e52bad0;  1 drivers
+S_0000025d9e5764d0 .scope module, "band" "bit32or" 2 5, 3 1 0, S_0000025d9e576340;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 32 "out";
+    .port_info 1 /INPUT 32 "in1";
+    .port_info 2 /INPUT 32 "in2";
+L_0000025d9e543290 .functor OR 32, v0000025d9e52b8f0_0, v0000025d9e52b990_0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0000025d9e52ef20_0 .net *"_ivl_2", 31 0, L_0000025d9e543290;  1 drivers
+v0000025d9e542c30_0 .net "in1", 31 0, v0000025d9e52b8f0_0;  1 drivers
+v0000025d9e576660_0 .net "in2", 31 0, v0000025d9e52b990_0;  1 drivers
+v0000025d9e576700_0 .net "out", 31 0, L_0000025d9e52bad0;  alias, 1 drivers
+L_0000025d9e52bad0 .part L_0000025d9e543290, 0, 32;
+    .scope S_0000025d9e576340;
+T_0 ;
+    %vpi_call 2 8 "$monitor", $time, " in1=%h in2=%h out=%h", v0000025d9e52b8f0_0, v0000025d9e52b990_0, v0000025d9e52ba30_0 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0000025d9e576340;
+T_1 ;
+    %pushi/vec4 42405, 0, 32;
+    %store/vec4 v0000025d9e52b8f0_0, 0, 32;
+    %pushi/vec4 23130, 0, 32;
+    %store/vec4 v0000025d9e52b990_0, 0, 32;
+    %delay 100, 0;
+    %pushi/vec4 23130, 0, 32;
+    %store/vec4 v0000025d9e52b8f0_0, 0, 32;
+    %delay 400, 0;
+    %vpi_call 2 14 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_bit32and.v";
+    "bit32or.v";
