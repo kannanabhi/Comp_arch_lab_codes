@@ -1,4 +1,4 @@
-module d_ff(q,d,clk,reset);
+module d_ff_async(q,d,clk,reset);
     input d,clk,reset;
     output q;
     reg q;
