@@ -6,30 +6,11 @@ module alu(result,carryout,a,b,binvert,carryin,operation);
     output carryout;
     output [31:0]result;
 
-    wire [31:0]not_b,bout;
-
-    case(operation)
-
-    2'b00: begin
-        //and operation
-        bit32and badd(result,a,b);
-          end
-    2'b01: begin
-        //or operation
-        bit32or bor(result,a,b);
-        end
-    
-    2'b10: begin
-        //add and subtract operation
-        bit32not bnot(not_b,b);
-        bit32_2to1mux(bout,binvert,b,not_b);
-        if(binvert)
-            assign carryin=1'b1;
-        bit32_fadder(result,carryout,carryin,a,bout);
-        end
-    default: begin
-        $display("incorrect operation code");
-        end
-    endcase
-
+    wire [31:0] Not_b,Wand,Wor,Wmux,Wadd;
+    bit32not bnot(Not_b,b);
+    bit32and band(Wand,a,b);
+    bit32or bor(Wor,a,b);
+    bit32_2to1mux mux1(Wmux,binvert,b,Not_b);
+    bit32_fadder fadd(Wadd,carryout,binvert,a,Wmux);
+    bit32_4to1mux mux2(result,Wand,Wor,Wadd,32'h00000000,operation);
 endmodule
