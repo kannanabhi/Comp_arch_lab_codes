@@ -14,7 +14,7 @@ module tbRegFile32;
     end
     #10   RegWrite = 1'b0;   ReadReg1 = 5'b00000;   ReadReg2 = 5'b00001;
     repeat(15)   begin
-        #10   ReadReg1 = ReadReg1 + 5'b00010;   ReadReg2 = ReadReg2 + 5'b00010;
+        #10   ReadReg1 = ReadReg1 + 5'b00010;   ReadReg2 = ReadReg2 + 5'b00010; 
     end
     #10   $finish;
   end
