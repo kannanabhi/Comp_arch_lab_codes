@@ -3,7 +3,7 @@ module bit32_reg(q,d,clk,reset);
     input [n-1:0] d;
     input clk,reset;
     output [n-1:0]q;
-
+    
 
     genvar j;
     generate
