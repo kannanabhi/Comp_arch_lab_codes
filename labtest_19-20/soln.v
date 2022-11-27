@@ -51,7 +51,7 @@ module decoder(out,en,count);
 		
 		out=8'b00000000;
 		if(en) begin
-			case(count) 
+			case(count)  
 				3'b000: out[0]<=1;
 				3'b001: out[1]<=1;
 				3'b010: out[2]<=1;
