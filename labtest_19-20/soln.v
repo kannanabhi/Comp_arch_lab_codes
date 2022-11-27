@@ -1,3 +1,4 @@
+`timescale 1ms/1ns
 module mux_2x1(out,seli,a,b);
 	input seli,a,b;
 	output out;
@@ -108,7 +109,7 @@ module testbench;
 	initial 
 		$monitor($time," clear=%b clk=%b en=%b s=%b o=%b",clear,clk,en,s,o);
 	always
-		#5 clk=~clk;
+		#0.5 clk=~clk;
 		
 	top_module tm(o,clear,clk,en,s);
 	initial begin
@@ -118,7 +119,7 @@ module testbench;
 		#5 clear=1;
 		s=3'b000;
 		repeat(7)
-			#10 s=s+3'b001;
+			#8 s=s+3'b001;
 		#100 $finish;
 	end
 endmodule
